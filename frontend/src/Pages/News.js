@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 import CardBox from '../components/CardBox';
@@ -11,6 +14,9 @@ const News = () => {
     React.useEffect(() => {
         fetchData(window.location.pathname.substr(1), setValue, setLoader);
     }, []);
+
+    const query = new URLSearchParams(window.location.search);
+    const page = parseInt(query.get('page') || '1', 10);
 
     return (
         <div>
@@ -33,6 +39,19 @@ const News = () => {
                     })}
                 </Box>
             )}
+            <Pagination
+                page={page}
+                count={1}
+                renderItem={(item) => {
+                    return (
+                        <PaginationItem
+                            component={Link}
+                            to={`?page=${item.page}`}
+                            // {...item}
+                        />
+                    );
+                }}
+            />
         </div>
     );
 };
