@@ -3,6 +3,7 @@ import { AppBar, Box, Toolbar, IconButton, Tabs, Tab } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+// import Typography from '@mui/material/Typography';
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.styles';
 
 const Header = () => {
@@ -40,6 +41,9 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
+                    {/* <Typography variant="h2" component="a" href="/">
+                        Экамчатка
+                    </Typography> */}
                     <Tabs
                         sx={{
                             flexGrow: 1,
