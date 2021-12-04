@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Tab, Tabs, Box, Toolbar, IconButton } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
@@ -34,7 +34,6 @@ const Header = () => {
                             <Tab label="О проекте" />
                         </Link>
                     </Tabs>
-
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
