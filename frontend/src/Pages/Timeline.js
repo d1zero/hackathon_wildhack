@@ -16,7 +16,7 @@ const Timeline = () => {
             <Timelline>
                 <TimelineItem>
                     <TimelineSeparator>
-                        <Button>
+                        <Button onClick>
                             <TimelineDot />
                         </Button>
                         <TimelineConnector />
