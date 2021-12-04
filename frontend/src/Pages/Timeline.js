@@ -8,6 +8,12 @@ import {
     TimelineDot,
 } from '@mui/lab';
 import { Button } from '@mui/material';
+import styled, { keyframes } from 'styled-components';
+import { headShake } from 'react-animations';
+
+const HeadShake = styled.div`
+    animation: 2s ${keyframes`${headShake}`} infinite;
+`;
 
 const Timeline = () => {
     return (
@@ -18,9 +24,11 @@ const Timeline = () => {
             <LabTimeline>
                 <TimelineItem>
                     <TimelineSeparator>
-                        <Button onClick>
-                            <TimelineDot />
-                        </Button>
+                        <HeadShake>
+                            <Button>
+                                <TimelineDot />
+                            </Button>
+                        </HeadShake>
                         <TimelineConnector />
                     </TimelineSeparator>
                     <TimelineContent>Eat</TimelineContent>
