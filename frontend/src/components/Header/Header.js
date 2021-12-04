@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Tab, Tabs, Box, Toolbar, IconButton } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.styles';
@@ -17,16 +17,6 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Tabs
-                        sx={{
-                            flexGrow: 1,
-                            display: { xs: 'none', sm: 'block' },
-                        }}
-                    >
-                        <Tab label="Новости" />
-                        <Tab label="Таймлайн" />
-                        <Tab label="О проекте" />
-                    </Tabs>
 
                     <Search>
                         <SearchIconWrapper>
