@@ -1,4 +1,5 @@
 import React from 'react';
+import CardBox from '../components/Header/CardBox';
 import fetchData from '../utils/fetchData';
 
 const News = () => {
@@ -11,6 +12,10 @@ const News = () => {
 
     return (
         <div>
+            <p>asdsda</p>
+            <p>asdsda</p>
+            <p>asdsda</p>
+            <CardBox />
             {loader ? (
                 <div>Loader</div>
             ) : (
