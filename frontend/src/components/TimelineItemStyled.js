@@ -11,13 +11,9 @@ import {
 const TimelineItemStyled = (props) => {
     const { item } = props;
     return (
-        <TimelineItem
-            onMouseEnter={() => {
-                console.log('MouseEnter', item.title);
-            }}
-        >
+        <TimelineItem>
             <TimelineOppositeContent sx={{ m: 'auto 0' }}>
-                {item.date}
+                {item.publish_datetime.split(' ')[0]}
             </TimelineOppositeContent>
             <TimelineSeparator>
                 <TimelineConnector />
