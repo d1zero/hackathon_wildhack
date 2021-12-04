@@ -16,15 +16,8 @@ const News = () => {
             <p>asdsda</p>
             <p>asdsda</p>
             <CardBox />
-            {loader ? (
-                <div>Loader</div>
-            ) : (
-                <div>
-                    {value.map((news) => {
-                        return <div>{news.id}</div>;
-                    })}
-                </div>
-            )}
+            {value}
+            {loader}
         </div>
     );
 };
