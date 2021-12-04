@@ -6,29 +6,27 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const CardBox = () => {
+const CardBox = (props) => {
+    const { item } = props;
     return (
         <div>
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
                     height="140"
-                    image="https://pbs.twimg.com/media/D6bjgPoUcAA_-5K.jpg"
-                    alt="green iguana"
+                    image={item.photo_url}
+                    alt={`News #${item.id}, photo from another source`}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        Lizard
+                        {item.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        Lizards are a widespread group of squamate reptiles,
-                        with over 6,000 species, ranging across all continents
-                        except Antarctica
+                        {item.preview_text}
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Share</Button>
-                    <Button size="small">Learn More</Button>
+                    <Button size="small">Open</Button>
                 </CardActions>
             </Card>
         </div>

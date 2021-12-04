@@ -13,18 +13,13 @@ const News = () => {
 
     return (
         <div>
-            <p>asdsda</p>
-            <p>asdsda</p>
-            <p>asdsda</p>
-            <CardBox />
+            <h2>Новости</h2>
             {loader ? (
-                <p>
-                    {value !== null ? <CircularProgress /> : <b>Error 404</b>}
-                </p>
+                <p>{value !== null ? <CircularProgress /> : <b>Error</b>}</p>
             ) : (
                 <div>
                     {value.map((item) => {
-                        return <CardBox key={item.id} />;
+                        return <CardBox item={item} key={item.id} />;
                     })}
                 </div>
             )}
