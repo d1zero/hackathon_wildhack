@@ -34,7 +34,6 @@ const Header = () => {
                             <Tab label="О проекте" />
                         </Link>
                     </Tabs>
-
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
