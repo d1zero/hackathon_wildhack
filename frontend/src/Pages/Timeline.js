@@ -6,9 +6,10 @@ import {
     TimelineSeparator,
     TimelineConnector,
     TimelineContent,
-    TimelineOppositeContent,
     TimelineDot,
 } from '@mui/lab';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import TimelineItemStyled from '../components/TimelineItemStyled';
 // import { Button } from '@mui/material';
 
 const Timeline = () => {
@@ -28,22 +29,23 @@ const Timeline = () => {
         },
     ];
     const listItems = exampleArray.map((item) =>
-        <TimelineItem>
-            <TimelineOppositeContent
-            >{item.date}</TimelineOppositeContent>
-            <TimelineSeparator>
-                <TimelineDot />
-                <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent>{item.title}</TimelineContent>
-        </TimelineItem>
+        <TimelineItemStyled item={item}/>
     );
     return (
         <>
             <p>sdasdas</p>
             <p>sdasdas</p>
             <p>sdasdas</p>
-            <LabTimeline>
+            <LabTimeline className="timeline">
+                <TimelineItem>
+                    <TimelineSeparator>
+                        <TimelineDot variant="outlined">
+                            <ArrowUpwardIcon/>
+                        </TimelineDot>
+                        <TimelineConnector />
+                    </TimelineSeparator>
+                    <TimelineContent/>
+                </TimelineItem>
                 {listItems}
             </LabTimeline>
         </>
