@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
     TimelineItem,
@@ -23,9 +22,5 @@ const TimelineItemStyled = (props) => {
         </TimelineItem>
     );
 };
-
-// TimelineItemStyled.defaultProps = {
-//     title: 'Title is not defined',
-// };
 
 export default TimelineItemStyled;

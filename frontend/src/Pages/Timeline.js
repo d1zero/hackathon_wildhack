@@ -10,7 +10,6 @@ import {
 } from '@mui/lab';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import TimelineItemStyled from '../components/TimelineItemStyled';
-// import { Button } from '@mui/material';
 
 const Timeline = () => {
     const exampleArray = [
@@ -28,9 +27,6 @@ const Timeline = () => {
             sourceName: 'Example Source',
         },
     ];
-    const listItems = exampleArray.map((item) =>
-        <TimelineItemStyled item={item}/>
-    );
     return (
         <>
             <p>sdasdas</p>
@@ -46,7 +42,9 @@ const Timeline = () => {
                     </TimelineSeparator>
                     <TimelineContent/>
                 </TimelineItem>
-                {listItems}
+                {exampleArray.map((item) => {
+                    return <TimelineItemStyled item={item} />;
+                })}
             </LabTimeline>
         </>
     );
