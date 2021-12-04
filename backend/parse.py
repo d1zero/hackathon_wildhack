@@ -16,7 +16,7 @@ from news.models import News  # nopep8
 
 start_time = time.time()
 
-for i in range(1, 36):
+for i in range(35, 0, -1):
     website_url = env('WEBSITE1_URL')
     url = f'{website_url}/news/ecology/page/{i}/'
     response = requests.get(url)
@@ -30,7 +30,36 @@ for i in range(1, 36):
     photos = []
 
     for quote in soup.find_all('h5', class_='date'):
-        dates.append(quote.get_text().strip())
+        date = quote.get_text().strip().split(' ')
+        months = ['янв', 'фев', 'мар', 'апр', 'ма', 'июн',
+                  'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
+
+        if date[1].find(months[0]) != -1:
+            date[1] = '01'
+        elif date[1].find(months[1]) != -1:
+            date[1] = '02'
+        elif date[1].find(months[2]) != -1:
+            date[1] = '03'
+        elif date[1].find(months[3]) != -1:
+            date[1] = '04'
+        elif date[1].find(months[4]) != -1:
+            date[1] = '05'
+        elif date[1].find(months[5]) != -1:
+            date[1] = '06'
+        elif date[1].find(months[6]) != -1:
+            date[1] = '07'
+        elif date[1].find(months[7]) != -1:
+            date[1] = '08'
+        elif date[1].find(months[8]) != -1:
+            date[1] = '09'
+        elif date[1].find(months[9]) != -1:
+            date[1] = '10'
+        elif date[1].find(months[10]) != -1:
+            date[1] = '11'
+        elif date[1].find(months[11]) != -1:
+            date[1] = '12'
+
+        dates.append(f'{date[0]}.{date[1]}.{date[2]}')
 
     for quote in soup.find_all('div', class_='ns'):
         data = quote.get_text().split('\n')
@@ -58,6 +87,13 @@ for i in range(1, 36):
                     paragraphs += p.get_text().replace(
                         '\n', '').replace('\r', '').replace('\t', '').strip()
                 full_texts.append(paragraphs)
+
+    titles.reverse()
+    dates.reverse()
+    preview_texts.reverse()
+    full_texts.reverse()
+    sources.reverse()
+    photos.reverse()
 
     for j in range(len(dates)):
         try:
