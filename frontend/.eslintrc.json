@@ -20,7 +20,7 @@
             }
         ],
         "func-names": ["error", "as-needed"],
-        "arrow-body-style": ["warn", "always"],
+        "arrow-body-style": ["error", "always"],
         "prettier/prettier": [
             "error",
             {

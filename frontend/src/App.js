@@ -1,5 +1,4 @@
 import React from 'react';
-// import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { Container } from '@mui/material';
 import Header from './components/Header/Header';
@@ -13,9 +12,10 @@ const App = () => {
             <Header />
             <Container>
                 <Routes>
-                    <Route exact path="/" element={<News />} />
-                    <Route path="/about" element={<About />} />
+                    <Route exact path="/" element={<Timeline />} />
                     <Route path="/timeline" element={<Timeline />} />
+                    <Route path="/news" element={<News />} />
+                    <Route path="/about" element={<About />} />
                 </Routes>
             </Container>
         </div>

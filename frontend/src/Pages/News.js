@@ -1,5 +1,5 @@
 import React from 'react';
-import CardBox from '../components/Header/CardBox';
+import CardBox from '../components/CardBox';
 import fetchData from '../utils/fetchData';
 
 const News = () => {
@@ -16,15 +16,8 @@ const News = () => {
             <p>asdsda</p>
             <p>asdsda</p>
             <CardBox />
-            {loader ? (
-                <div>Loader</div>
-            ) : (
-                <div>
-                    {value.map((news) => {
-                        return <div>{news.id}</div>;
-                    })}
-                </div>
-            )}
+            {value}
+            {loader}
         </div>
     );
 };
