@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar, Box, Toolbar, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.styles';
 
 const Header = () => {
@@ -17,7 +18,22 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-
+                    <Tabs
+                        sx={{
+                            flexGrow: 1,
+                            display: { xs: 'none', sm: 'block' },
+                        }}
+                    >
+                        <Link to="/">
+                            <Tab label="Новости" />
+                        </Link>
+                        <Link to="/Timeline">
+                            <Tab label="Таймлайн" />
+                        </Link>
+                        <Link to="/About">
+                            <Tab label="О проекте" />
+                        </Link>
+                    </Tabs>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
