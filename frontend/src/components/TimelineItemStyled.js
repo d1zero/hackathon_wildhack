@@ -11,16 +11,12 @@ import styled, { keyframes } from 'styled-components';
 import { headShake } from 'react-animations';
 import CardBox from './CardBox';
 
-const HeadShake = styled.div`
-    animation: 2s ${keyframes`${headShake}`} 1;
-`;
-
 const TimelineItemStyled = (props) => {
     const [visibleCard, setVisibleCard] = React.useState(false);
     const { item } = props;
-    const handleClick = () => {
-        setVisibleCard(!visibleCard);
-    };
+    const HeadShake = styled.div`
+        animation: 2s ${keyframes`${headShake}`} 1;
+    `;
     return (
         <>
             <TimelineItem>
@@ -30,7 +26,14 @@ const TimelineItemStyled = (props) => {
                 <TimelineSeparator>
                     <TimelineConnector />
                     <HeadShake>
-                        <TimelineDot onClick={handleClick} />
+                        <TimelineDot
+                            onMouseEnter={() => {
+                                setVisibleCard(true);
+                            }}
+                            onMouseLeave={() => {
+                                setVisibleCard(false);
+                            }}
+                        />
                     </HeadShake>
                     <TimelineConnector />
                 </TimelineSeparator>
@@ -38,7 +41,11 @@ const TimelineItemStyled = (props) => {
                     {item.title}
                 </TimelineContent>
             </TimelineItem>
-            {visibleCard ? <CardBox /> : <div />}
+            {visibleCard ? (
+                <CardBox style={{ position: 'absolute', top: '0' }} />
+            ) : (
+                <div />
+            )}
         </>
     );
 };
