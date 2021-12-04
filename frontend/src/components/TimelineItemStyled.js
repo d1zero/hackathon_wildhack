@@ -25,12 +25,15 @@ const TimelineItemStyled = (props) => {
         <>
             <TimelineItem>
                 <TimelineOppositeContent sx={{ m: 'auto 0' }}>
-                    {item.date}
+                    {item.publish_datetime}
                 </TimelineOppositeContent>
                 <TimelineSeparator>
                     <TimelineConnector />
                     <HeadShake>
-                        <TimelineDot onClick={handleClick} />
+                        <TimelineDot
+                            onClick={handleClick}
+                            variant={visibleCard ? 'outlined' : 'filled'}
+                        />
                     </HeadShake>
                     <TimelineConnector />
                 </TimelineSeparator>
@@ -38,7 +41,7 @@ const TimelineItemStyled = (props) => {
                     {item.title}
                 </TimelineContent>
             </TimelineItem>
-            {visibleCard ? <CardBox /> : <div />}
+            {visibleCard && <CardBox item={item} />}
         </>
     );
 };
