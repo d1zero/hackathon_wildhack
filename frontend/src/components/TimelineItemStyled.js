@@ -7,25 +7,39 @@ import {
     TimelineOppositeContent,
     TimelineDot,
 } from '@mui/lab';
+import styled, { keyframes } from 'styled-components';
+import { headShake } from 'react-animations';
+import CardBox from './CardBox';
+
+const HeadShake = styled.div`
+    animation: 2s ${keyframes`${headShake}`} 1;
+`;
 
 const TimelineItemStyled = (props) => {
+    const [visibleCard, setVisibleCard] = React.useState(false);
     const { item } = props;
+    const handleClick = () => {
+        setVisibleCard(!visibleCard);
+    };
     return (
-        <TimelineItem
-            onMouseEnter={() => {
-                console.log('MouseEnter', item.title);
-            }}
-        >
-            <TimelineOppositeContent sx={{ m: 'auto 0' }}>
-                {item.date}
-            </TimelineOppositeContent>
-            <TimelineSeparator>
-                <TimelineConnector />
-                <TimelineDot />
-                <TimelineConnector />
-            </TimelineSeparator>
-            <TimelineContent sx={{ m: 'auto 0' }}>{item.title}</TimelineContent>
-        </TimelineItem>
+        <>
+            <TimelineItem>
+                <TimelineOppositeContent sx={{ m: 'auto 0' }}>
+                    {item.date}
+                </TimelineOppositeContent>
+                <TimelineSeparator>
+                    <TimelineConnector />
+                    <HeadShake>
+                        <TimelineDot onClick={handleClick} />
+                    </HeadShake>
+                    <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent sx={{ m: 'auto 0' }}>
+                    {item.title}
+                </TimelineContent>
+            </TimelineItem>
+            {visibleCard ? <CardBox /> : <div />}
+        </>
     );
 };
 
