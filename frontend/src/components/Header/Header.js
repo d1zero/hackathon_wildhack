@@ -2,8 +2,8 @@ import React from 'react';
 import { AppBar, Box, Toolbar, IconButton, Tabs, Tab } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
-// import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.styles';
 
 const Header = () => {
@@ -41,9 +41,17 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    {/* <Typography variant="h2" component="a" href="/">
-                        Экамчатка
-                    </Typography> */}
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        color="inherit"
+                        underline="none"
+                        onClick={() => {
+                            setPage(0);
+                        }}
+                    >
+                        <h1>Экамчатка</h1>
+                    </Link>
                     <Tabs
                         sx={{
                             flexGrow: 1,
@@ -53,7 +61,7 @@ const Header = () => {
                     >
                         <Tab
                             label="Таймлайн"
-                            component={Link}
+                            component={RouterLink}
                             to="/"
                             onClick={() => {
                                 setPage(0);
@@ -61,7 +69,7 @@ const Header = () => {
                         />
                         <Tab
                             label="Новости"
-                            component={Link}
+                            component={RouterLink}
                             to="/news"
                             onClick={() => {
                                 setPage(1);
@@ -69,7 +77,7 @@ const Header = () => {
                         />
                         <Tab
                             label="О проекте"
-                            component={Link}
+                            component={RouterLink}
                             to="/about"
                             onClick={() => {
                                 setPage(2);
