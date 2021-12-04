@@ -1,14 +1,33 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, IconButton } from '@mui/material';
+import { AppBar, Box, Toolbar, IconButton, Tabs, Tab } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.styles';
 
 const Header = () => {
+    const [page, setPage] = React.useState(0);
+    React.useEffect(() => {
+        const { pathname } = window.location;
+        switch (pathname) {
+            case '/timeline':
+                setPage(1);
+                break;
+            case '/about':
+                setPage(2);
+                break;
+            default:
+                setPage(0);
+                break;
+        }
+    }, []);
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar color="transparent">
+            <AppBar
+                color="transparent"
+                position="static"
+                style={{ padding: '0 20px', marginBottom: '20px' }}
+            >
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -23,16 +42,32 @@ const Header = () => {
                             flexGrow: 1,
                             display: { xs: 'none', sm: 'block' },
                         }}
+                        value={page}
                     >
-                        <Link to="/">
-                            <Tab label="Новости" />
-                        </Link>
-                        <Link to="/Timeline">
-                            <Tab label="Таймлайн" />
-                        </Link>
-                        <Link to="/About">
-                            <Tab label="О проекте" />
-                        </Link>
+                        <Tab
+                            label="Новости"
+                            component={Link}
+                            to="/"
+                            onClick={() => {
+                                setPage(0);
+                            }}
+                        />
+                        <Tab
+                            label="Таймлайн"
+                            component={Link}
+                            to="/timeline"
+                            onClick={() => {
+                                setPage(1);
+                            }}
+                        />
+                        <Tab
+                            label="О проекте"
+                            component={Link}
+                            to="/about"
+                            onClick={() => {
+                                setPage(2);
+                            }}
+                        />
                     </Tabs>
                     <Search>
                         <SearchIconWrapper>
