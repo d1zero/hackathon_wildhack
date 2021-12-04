@@ -34,7 +34,7 @@ const News = () => {
                         width: '100%',
                     }}
                 >
-                    {value.map((item) => {
+                    {value.data.map((item) => {
                         return <CardBox item={item} key={item.id} />;
                     })}
                 </Box>
