@@ -1,5 +1,6 @@
 import React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import CardBox from '../components/CardBox';
 import fetchData from '../utils/fetchData';
 
@@ -17,11 +18,20 @@ const News = () => {
             {loader ? (
                 <p>{value !== null ? <CircularProgress /> : <b>Error</b>}</p>
             ) : (
-                <div>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-around',
+                        columnGap: '10px',
+                        rowGap: '15px',
+                        flexWrap: 'wrap',
+                        width: '100%',
+                    }}
+                >
                     {value.map((item) => {
                         return <CardBox item={item} key={item.id} />;
                     })}
-                </div>
+                </Box>
             )}
         </div>
     );
