@@ -10,7 +10,7 @@ const Header = () => {
     React.useEffect(() => {
         const { pathname } = window.location;
         switch (pathname) {
-            case '/timeline':
+            case '/news':
                 setPage(1);
                 break;
             case '/about':
@@ -48,7 +48,7 @@ const Header = () => {
                         value={page}
                     >
                         <Tab
-                            label="Новости"
+                            label="Таймлайн"
                             component={Link}
                             to="/"
                             onClick={() => {
@@ -56,9 +56,9 @@ const Header = () => {
                             }}
                         />
                         <Tab
-                            label="Таймлайн"
+                            label="Новости"
                             component={Link}
-                            to="/timeline"
+                            to="/news"
                             onClick={() => {
                                 setPage(1);
                             }}

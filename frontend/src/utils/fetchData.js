@@ -13,6 +13,7 @@ const fetchData = async (uri, setter, loader) => {
         })
         .catch((e) => {
             console.log(e);
+            setter(null);
         });
 };
 

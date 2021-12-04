@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
     Timeline as LabTimeline,
@@ -9,10 +8,20 @@ import {
     TimelineDot,
 } from '@mui/lab';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import CircularProgress from '@mui/material/CircularProgress';
 import TimelineItemStyled from '../components/TimelineItemStyled';
+// import fetchData from '../utils/fetchData';
 
 const Timeline = () => {
-    const exampleArray = [
+    // const [value, setValue] = React.useState();
+    // const [loader, setLoader] = React.useState(true);
+
+    // React.useEffect(() => {
+    //     fetchData('timeline/', setValue, setLoader);
+    // }, []);
+
+    // debug
+    const value = [
         {
             title: 'Example News Title',
             date: '03.11.2021',
@@ -27,25 +36,33 @@ const Timeline = () => {
             sourceName: 'Example Source',
         },
     ];
+    const loader = false;
+
     return (
         <>
-            <p>sdasdas</p>
-            <p>sdasdas</p>
-            <p>sdasdas</p>
-            <LabTimeline className="timeline">
-                <TimelineItem>
-                    <TimelineSeparator>
-                        <TimelineDot variant="outlined">
-                            <ArrowUpwardIcon/>
-                        </TimelineDot>
-                        <TimelineConnector />
-                    </TimelineSeparator>
-                    <TimelineContent/>
-                </TimelineItem>
-                {exampleArray.map((item) => {
-                    return <TimelineItemStyled item={item} />;
-                })}
-            </LabTimeline>
+            <h2>Timeline</h2>
+            <p>Text of description</p>
+
+            {loader ? (
+                <p>
+                    {value !== null ? <CircularProgress /> : <b>Error 404</b>}
+                </p>
+            ) : (
+                <LabTimeline className="timeline">
+                    <TimelineItem>
+                        <TimelineSeparator>
+                            <TimelineDot variant="outlined">
+                                <ArrowUpwardIcon />
+                            </TimelineDot>
+                            <TimelineConnector />
+                        </TimelineSeparator>
+                        <TimelineContent />
+                    </TimelineItem>
+                    {value.map((item) => {
+                        return <TimelineItemStyled item={item} />;
+                    })}
+                </LabTimeline>
+            )}
         </>
     );
 };
