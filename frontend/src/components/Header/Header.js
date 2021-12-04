@@ -34,6 +34,9 @@ const Header = () => {
                         edge="start"
                         color="inherit"
                         aria-label="open drawer"
+                        sx={{
+                            display: { xs: 'inline-flex', sm: 'none' },
+                        }}
                     >
                         <MenuIcon />
                     </IconButton>

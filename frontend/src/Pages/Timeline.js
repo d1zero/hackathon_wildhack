@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
     Timeline as LabTimeline,
@@ -7,7 +8,7 @@ import {
     TimelineContent,
     TimelineDot,
 } from '@mui/lab';
-import { Button } from '@mui/material';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import TimelineItemStyled from '../components/TimelineItemStyled';
 
 const Timeline = () => {
@@ -31,15 +32,15 @@ const Timeline = () => {
             <p>sdasdas</p>
             <p>sdasdas</p>
             <p>sdasdas</p>
-            <LabTimeline>
+            <LabTimeline className="timeline">
                 <TimelineItem>
                     <TimelineSeparator>
-                        <Button onClick>
-                            <TimelineDot />
-                        </Button>
+                        <TimelineDot variant="outlined">
+                            <ArrowUpwardIcon/>
+                        </TimelineDot>
                         <TimelineConnector />
                     </TimelineSeparator>
-                    <TimelineContent>Eat</TimelineContent>
+                    <TimelineContent/>
                 </TimelineItem>
                 {exampleArray.map((item) => {
                     return <TimelineItemStyled item={item} />;
