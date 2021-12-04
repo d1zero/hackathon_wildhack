@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {
     Timeline as LabTimeline,
@@ -28,25 +27,23 @@ const Timeline = () => {
             sourceName: 'Example Source',
         },
     ];
-    const listItems = exampleArray.map((item) =>
-        <TimelineItemStyled item={item}/>
-    );
     return (
         <>
-            <p>sdasdas</p>
-            <p>sdasdas</p>
-            <p>sdasdas</p>
+            <h2>Timeline</h2>
+            <p>Text of description</p>
             <LabTimeline className="timeline">
                 <TimelineItem>
                     <TimelineSeparator>
                         <TimelineDot variant="outlined">
-                            <ArrowUpwardIcon/>
+                            <ArrowUpwardIcon />
                         </TimelineDot>
                         <TimelineConnector />
                     </TimelineSeparator>
-                    <TimelineContent/>
+                    <TimelineContent />
                 </TimelineItem>
-                {listItems}
+                {exampleArray.map((item) => {
+                    return <TimelineItemStyled item={item} />;
+                })}
             </LabTimeline>
         </>
     );
