@@ -12,6 +12,9 @@ const News = () => {
         fetchData(`news/?page=${page}`, setData, setLoader);
     }, [page]);
 
+    const query = new URLSearchParams(window.location.search);
+    const page = parseInt(query.get('page') || '1', 10);
+
     return (
         <div>
             <h2>Новости</h2>
