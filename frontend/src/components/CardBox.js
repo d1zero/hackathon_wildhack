@@ -13,7 +13,7 @@ const CardBox = ({ styles, item }) => {
                 component="img"
                 height="140"
                 image={item.photo_url}
-                alt="green iguana"
+                alt={item.title}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
