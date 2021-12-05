@@ -1,5 +1,4 @@
 import React from 'react';
-import './Timeline.css';
 import {
     Timeline as LabTimeline,
     TimelineItem,
@@ -15,16 +14,11 @@ import TimelineItemStyled from '../components/TimelineItemStyled';
 import fetchData from '../utils/fetchData';
 
 const Timeline = () => {
-    const [value, setValue] = React.useState();
+    const [data, setData] = React.useState();
     const [loader, setLoader] = React.useState(true);
 
-    // React.useEffect(() => {
-    //     fetchData('news/timeline/', setValue, setLoader);
-    // }, []);
-
-    // debug
     React.useEffect(() => {
-        fetchData('news', setValue, setLoader);
+        fetchData('api/timeline/', setData, setLoader);
     }, []);
 
     return (
@@ -33,9 +27,7 @@ const Timeline = () => {
             <p>Text of description</p>
 
             {loader ? (
-                <p>
-                    {value !== null ? <CircularProgress /> : <b>Error 404</b>}
-                </p>
+                <CircularProgress />
             ) : (
                 <LabTimeline className="timeline">
                     <TimelineItem>
@@ -54,9 +46,13 @@ const Timeline = () => {
                         </TimelineSeparator>
                         <TimelineContent />
                     </TimelineItem>
-                    {/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Убрать .data после дебага */}
-                    {value.data.map((item) => {
-                        return <TimelineItemStyled item={item} key={item.id} />;
+                    {data.map((item) => {
+                        return (
+                            <TimelineItemStyled
+                                key={data.indexOf(item)}
+                                item={item}
+                            />
+                        );
                     })}
                 </LabTimeline>
             )}

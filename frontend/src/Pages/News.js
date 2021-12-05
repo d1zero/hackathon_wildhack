@@ -1,28 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { CircularProgress, Box, Pagination, Typography } from '@mui/material';
 import CardBox from '../components/CardBox';
 import fetchData from '../utils/fetchData';
 
 const News = () => {
-    const [value, setValue] = React.useState();
+    const [data, setData] = React.useState();
     const [loader, setLoader] = React.useState(true);
+    const [page, setPage] = React.useState(1);
 
     React.useEffect(() => {
-        fetchData(window.location.pathname.substr(1), setValue, setLoader);
-    }, []);
-
-    const query = new URLSearchParams(window.location.search);
-    const page = parseInt(query.get('page') || '1', 10);
+        fetchData(`api/?page=${page}`, setData, setLoader);
+    }, [page]);
 
     return (
         <div>
             <h2>Новости</h2>
             {loader ? (
-                <p>{value !== null ? <CircularProgress /> : <b>Error</b>}</p>
+                <CircularProgress />
             ) : (
                 <Box
                     sx={{
@@ -34,22 +28,18 @@ const News = () => {
                         width: '100%',
                     }}
                 >
-                    {value.data.map((item) => {
+                    {data.data.map((item) => {
                         return <CardBox item={item} key={item.id} />;
                     })}
                 </Box>
             )}
+            <Typography>{page}</Typography>
             <Pagination
-                page={page}
-                count={1}
-                renderItem={(item) => {
-                    return (
-                        <PaginationItem
-                            component={Link}
-                            to={`?page=${item.page}`}
-                            // {...item}
-                        />
-                    );
+                count={data?.pages}
+                showFirstButton
+                showLastButton
+                onChange={(event, val) => {
+                    setPage(val);
                 }}
             />
         </div>

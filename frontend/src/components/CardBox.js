@@ -6,26 +6,29 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const CardBox = (props) => {
-    const { item } = props;
+const CardBox = ({ styles, item }) => {
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345 }} style={styles}>
             <CardMedia
                 component="img"
                 height="140"
                 image={item.photo_url}
-                alt={`News #${item.id}, photo from another source`}
+                alt={item.title}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                     {item.title}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    {item.preview_text}
+                    {item.preview_text
+                        .replaceAll('<p>', '')
+                        .replaceAll('</p>', '')
+                        .replaceAll('&laquo;', '')
+                        .replaceAll('&raquo;', '')}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Open</Button>
+                <Button size="small">Вся новость</Button>
             </CardActions>
         </Card>
     );
