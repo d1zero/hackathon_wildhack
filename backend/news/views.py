@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class NewsList(APIView):
     def get(self, request):
-        news = News.objects.all().order_by('id')
+        news = News.objects.all().order_by('-id')
         paginator = Paginator(news, settings.REST_FRAMEWORK.get('PAGE_SIZE'))
         page_num = request.GET.get('page')
         if page_num is None:
@@ -41,6 +41,6 @@ class NewsDetail(APIView):
 
 class TimelineList(APIView):
     def get(self, request):
-        news = News.objects.filter(timeline=True)
+        news = News.objects.filter(timeline=True).order_by('-id')
         data = NewsSerializer(news, many=True).data
         return Response(data)
