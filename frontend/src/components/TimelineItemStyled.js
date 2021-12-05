@@ -8,43 +8,56 @@ import {
     TimelineDot,
 } from '@mui/lab';
 import styled, { keyframes } from 'styled-components';
-import { headShake } from 'react-animations';
+import { headShake, fadeInLeft } from 'react-animations';
 import CardBox from './CardBox';
 
-const TimelineItemStyled = (props) => {
+const TimelineItemStyled = ({ item }) => {
     const [visibleCard, setVisibleCard] = React.useState(false);
-    const [onHover, setHover] = React.useState(false);
-    const { item } = props;
     const HeadShake = styled.div`
         animation: 2s ${keyframes`${headShake}`} 1;
     `;
+    const CardFadeIn = styled.div`
+        animation: 2s ${keyframes`${fadeInLeft}`} 1;
+    `;
+
     return (
-        <>
-            <TimelineItem
-                onMouseEnter={handleHover}
-                onMouseLeave={handleHover}
-                onClick={handleClick}
+        <TimelineItem>
+            <TimelineOppositeContent
+                sx={{
+                    m: 'auto 0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'flex-end',
+                }}
             >
-                <TimelineOppositeContent
-                    sx={{ m: 'auto 0', maxWidth: 'fit-content' }}
+                <CardFadeIn>
+                    <CardBox
+                        styles={{
+                            position: 'relative',
+                            marginRight: '30px',
+                            marginTop: '50px',
+                            visibility: visibleCard ? 'visible' : 'hidden',
+                        }}
+                        item={item}
+                    />
+                </CardFadeIn>
+                {item.publish_datetime}
+            </TimelineOppositeContent>
+            <TimelineSeparator>
+                <TimelineConnector />
+                <HeadShake
+                    onClick={() => {
+                        setVisibleCard(!visibleCard);
+                    }}
                 >
-                    {item.publish_datetime}
-                </TimelineOppositeContent>
-                <TimelineSeparator>
-                    <TimelineConnector />
-                        <HeadShake>
-                            <TimelineDot
-                                variant={visibleCard ? 'outlined' : 'filled'}
-                            />
-                        </HeadShake>
-                    <TimelineConnector />
-                </TimelineSeparator>
-                <TimelineContent sx={{ m: 'auto 0' }}>
-                    {item.title}
-                </TimelineContent>
-            </TimelineItem>
-            {visibleCard && <CardBox item={item} />}
-        </>
+                    <TimelineDot
+                        variant={visibleCard ? 'outlined' : 'filled'}
+                    />
+                </HeadShake>
+                <TimelineConnector />
+            </TimelineSeparator>
+            <TimelineContent sx={{ m: 'auto 0' }}>{item.title}</TimelineContent>
+        </TimelineItem>
     );
 };
 

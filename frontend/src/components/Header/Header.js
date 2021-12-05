@@ -11,10 +11,10 @@ const Header = () => {
     React.useEffect(() => {
         const { pathname } = window.location;
         switch (pathname) {
-            case '/news':
+            case '/news/':
                 setPage(1);
                 break;
-            case '/about':
+            case '/about/':
                 setPage(2);
                 break;
             default:
@@ -25,8 +25,8 @@ const Header = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar
-                color="inherit"
-                position="fixed"
+                color="default"
+                position="static"
                 style={{ padding: '0 20px', marginBottom: '20px' }}
             >
                 <Toolbar>
@@ -72,16 +72,16 @@ const Header = () => {
                         />
                         <Tab
                             label="Новости"
-                            component={RouterLink}
-                            to="/news"
+                            component={Link}
+                            to="/news/"
                             onClick={() => {
                                 setPage(1);
                             }}
                         />
                         <Tab
                             label="О проекте"
-                            component={RouterLink}
-                            to="/about"
+                            component={Link}
+                            to="/about/"
                             onClick={() => {
                                 setPage(2);
                             }}
