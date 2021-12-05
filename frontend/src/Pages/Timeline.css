@@ -1,0 +1,7 @@
+.MuiTimelineItem-root:not(:first-child) {
+    cursor: pointer;
+}
+
+.MuiTimelineContent-root {
+    min-width: 60%;
+}
