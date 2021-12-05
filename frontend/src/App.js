@@ -2,9 +2,9 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Container } from '@mui/material';
 import Header from './components/Header/Header';
-import News from './Pages/News';
-import About from './Pages/About';
-import Timeline from './Pages/Timeline';
+import News from './pages/News';
+import About from './pages/About';
+import Timeline from './pages/Timeline';
 
 const App = () => {
     return (

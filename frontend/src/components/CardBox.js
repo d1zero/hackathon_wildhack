@@ -13,7 +13,7 @@ const CardBox = ({ styles, item }) => {
                 component="img"
                 height="140"
                 image={item.photo_url}
-                alt={item.title}
+                alt={`News #${item.id}, photo from another source`}
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -28,7 +28,7 @@ const CardBox = ({ styles, item }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Вся новость</Button>
+                <Button size="small">Смотреть новость</Button>
             </CardActions>
         </Card>
     );

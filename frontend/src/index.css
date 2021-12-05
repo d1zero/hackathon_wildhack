@@ -9,5 +9,14 @@ ul {
 }
 
 html {
-	overflow-y: scroll;
+    overflow-y: overlay;
+}
+
+h1 {
+    text-transform: uppercase;
+    margin-right: 50px;
+}
+
+.MuiTimelineItem-root:not(:first-child) {
+    cursor: pointer;
 }
