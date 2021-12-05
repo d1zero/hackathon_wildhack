@@ -17,24 +17,39 @@ const HeadShake = styled.div`
 
 const TimelineItemStyled = (props) => {
     const [visibleCard, setVisibleCard] = React.useState(false);
+    const [onHover, setHover] = React.useState(false);
     const { item } = props;
     const handleClick = () => {
         setVisibleCard(!visibleCard);
     };
+    const handleHover = () => {
+        setHover(!onHover);
+    };
     return (
         <>
-            <TimelineItem>
-                <TimelineOppositeContent sx={{ m: 'auto 0' }}>
+            <TimelineItem
+                onMouseEnter={handleHover}
+                onMouseLeave={handleHover}
+                onClick={handleClick}
+            >
+                <TimelineOppositeContent
+                    sx={{ m: 'auto 0', maxWidth: 'fit-content' }}
+                >
                     {item.publish_datetime}
                 </TimelineOppositeContent>
                 <TimelineSeparator>
                     <TimelineConnector />
-                    <HeadShake>
+                    {onHover ? (
+                        <HeadShake>
+                            <TimelineDot
+                                variant={visibleCard ? 'outlined' : 'filled'}
+                            />
+                        </HeadShake>
+                    ) : (
                         <TimelineDot
-                            onClick={handleClick}
                             variant={visibleCard ? 'outlined' : 'filled'}
                         />
-                    </HeadShake>
+                    )}
                     <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent sx={{ m: 'auto 0' }}>

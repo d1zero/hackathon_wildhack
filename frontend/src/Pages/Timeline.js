@@ -6,6 +6,7 @@ import {
     TimelineSeparator,
     TimelineConnector,
     TimelineContent,
+    TimelineOppositeContent,
     TimelineDot,
 } from '@mui/lab';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
@@ -38,6 +39,13 @@ const Timeline = () => {
             ) : (
                 <LabTimeline className="timeline">
                     <TimelineItem>
+                        <TimelineOppositeContent
+                            sx={{
+                                m: 'auto 0',
+                                maxWidth: '70px',
+                                minWidth: '70px',
+                            }}
+                        />
                         <TimelineSeparator>
                             <TimelineDot variant="outlined">
                                 <ArrowUpwardIcon />
