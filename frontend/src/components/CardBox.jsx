@@ -27,7 +27,7 @@ const CardBox = ({ styles, item }) => {
                         .replaceAll('&raquo;', '')}
                 </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions style={{ marginTop: 'auto' }}>
                 <Button size="small">Вся новость</Button>
             </CardActions>
         </Card>

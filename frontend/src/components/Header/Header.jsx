@@ -29,12 +29,14 @@ const Header = () => {
                 style={{ padding: '0 20px', marginBottom: '20px' }}
             >
                 <Toolbar>
-                    <img
-                        src={logo}
-                        alt="Логотип"
-                        height="64px"
-                        style={{ marginRight: '20px' }}
-                    />
+                    <Link to="/">
+                        <img
+                            src={logo}
+                            alt="Логотип"
+                            height="64px"
+                            style={{ marginRight: '20px' }}
+                        />
+                    </Link>
                     <Tabs
                         sx={{
                             flexGrow: 1,

@@ -32,6 +32,7 @@ const Timeline = () => {
                     justifyContent: 'center',
                     textAlign: 'center',
                 }}
+                gutterBottom
             >
                 Данный Таймлайн проведёт вас за руку сквозь природные события
                 Камчатского края.
@@ -41,7 +42,13 @@ const Timeline = () => {
             </Typography>
 
             {loader ? (
-                <CircularProgress />
+                <CircularProgress
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        width: '100%',
+                    }}
+                />
             ) : (
                 <LabTimeline className="timeline">
                     <TimelineItem>

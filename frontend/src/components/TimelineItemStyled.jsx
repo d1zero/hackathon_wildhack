@@ -16,6 +16,7 @@ const TimelineItemStyled = ({ item }) => {
     const HeadShake = styled.div`
         animation: 2s ${keyframes`${headShake}`} 1;
     `;
+
     const CardFadeIn = styled.div`
         animation: 2s ${keyframes`${fadeInLeft}`} 1;
     `;
