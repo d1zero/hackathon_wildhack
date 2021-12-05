@@ -50,8 +50,4 @@ const TimelineItemStyled = (props) => {
     );
 };
 
-// TimelineItemStyled.defaultProps = {
-//     title: 'Title is not defined',
-// };
-
 export default TimelineItemStyled;
