@@ -2,16 +2,13 @@ import React from 'react';
 import {
     Timeline as LabTimeline,
     TimelineItem,
-    TimelineSeparator,
-    TimelineConnector,
     TimelineContent,
     TimelineOppositeContent,
-    TimelineDot,
 } from '@mui/lab';
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import CircularProgress from '@mui/material/CircularProgress';
+import { CircularProgress, Typography } from '@mui/material';
 import TimelineItemStyled from '../components/TimelineItemStyled';
 import fetchData from '../utils/fetchData';
+import SetTitle from '../hooks/setTitle';
 
 const Timeline = () => {
     const [data, setData] = React.useState();
@@ -21,10 +18,27 @@ const Timeline = () => {
         fetchData('api/timeline/', setData, setLoader);
     }, []);
 
+    SetTitle('Таймлайн');
+
     return (
         <>
-            <h2>Timeline</h2>
-            <p>Text of description</p>
+            <Typography variant="h2" align="center" gutterBottom>
+                Таймлайн Камчатки
+            </Typography>
+            <Typography
+                variant="body1"
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                }}
+            >
+                Данный Таймлайн проведёт вас за руку сквозь природные события
+                Камчатского края.
+                <br />
+                Вы сможете увидеть и прочитать, что происходило на Камчатке за
+                долго до этого
+            </Typography>
 
             {loader ? (
                 <CircularProgress />
@@ -38,12 +52,7 @@ const Timeline = () => {
                                 minWidth: '70px',
                             }}
                         />
-                        <TimelineSeparator>
-                            <TimelineDot variant="outlined">
-                                <ArrowUpwardIcon />
-                            </TimelineDot>
-                            <TimelineConnector />
-                        </TimelineSeparator>
+
                         <TimelineContent />
                     </TimelineItem>
                     {data.map((item) => {

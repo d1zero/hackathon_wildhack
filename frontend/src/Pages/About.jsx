@@ -1,5 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-carousel-minimal';
+import SetTitle from '../hooks/setTitle';
 
 const About = () => {
     const data = [
@@ -38,6 +39,9 @@ const About = () => {
         fontSize: '20px',
         fontWeight: 'bold',
     };
+
+    SetTitle('О проекте');
+
     return (
         <div
             style={{
