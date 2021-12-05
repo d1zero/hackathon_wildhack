@@ -2,18 +2,22 @@ import React from 'react';
 import { AppBar, Box, Toolbar, IconButton, Tabs, Tab } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import Link from '@mui/material/Link';
+import { Link as RouterLink } from 'react-router-dom';
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.styles';
+import logo from '../../logo.png';
 
 const Header = () => {
     const [page, setPage] = React.useState(0);
     React.useEffect(() => {
         const { pathname } = window.location;
-        switch (pathname) {
-            case '/news/':
+        const pageUrl =
+            pathname.split('/').length > 1 ? pathname.split('/')[1] : '/';
+        switch (pageUrl) {
+            case 'news':
                 setPage(1);
                 break;
-            case '/about/':
+            case 'about':
                 setPage(2);
                 break;
             default:
@@ -24,8 +28,8 @@ const Header = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar
-                color="default"
-                position="static"
+                color="inherit"
+                position="fixed"
                 style={{ padding: '0 20px', marginBottom: '20px' }}
             >
                 <Toolbar>
@@ -35,21 +39,39 @@ const Header = () => {
                         color="inherit"
                         aria-label="open drawer"
                         sx={{
-                            display: { xs: 'inline-flex', sm: 'none' },
+                            display: { xs: 'inline-flex', md: 'none' },
                         }}
                     >
                         <MenuIcon />
                     </IconButton>
+                    <Link
+                        component={RouterLink}
+                        to="/"
+                        color="inherit"
+                        underline="none"
+                        onClick={() => {
+                            setPage(0);
+                        }}
+                        sx={{
+                            display: { xs: 'none', md: 'block' },
+                        }}
+                    >
+                        <img
+                            src={logo}
+                            alt="Logo Nature of Kamchatka"
+                            height="80px"
+                        />
+                    </Link>
                     <Tabs
                         sx={{
                             flexGrow: 1,
-                            display: { xs: 'none', sm: 'block' },
+                            display: { xs: 'none', md: 'block' },
                         }}
                         value={page}
                     >
                         <Tab
                             label="Таймлайн"
-                            component={Link}
+                            component={RouterLink}
                             to="/"
                             onClick={() => {
                                 setPage(0);
@@ -57,16 +79,16 @@ const Header = () => {
                         />
                         <Tab
                             label="Новости"
-                            component={Link}
-                            to="/news/"
+                            component={RouterLink}
+                            to="/news"
                             onClick={() => {
                                 setPage(1);
                             }}
                         />
                         <Tab
                             label="О проекте"
-                            component={Link}
-                            to="/about/"
+                            component={RouterLink}
+                            to="/about"
                             onClick={() => {
                                 setPage(2);
                             }}
@@ -83,6 +105,7 @@ const Header = () => {
                     </Search>
                 </Toolbar>
             </AppBar>
+            <Toolbar />
         </Box>
     );
 };
