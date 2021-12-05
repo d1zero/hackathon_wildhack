@@ -9,7 +9,7 @@ const News = () => {
     const [page, setPage] = React.useState(1);
 
     React.useEffect(() => {
-        fetchData(`news/?page=${page}`, setData, setLoader);
+        fetchData(`api/?page=${page}`, setData, setLoader);
     }, [page]);
 
     return (
