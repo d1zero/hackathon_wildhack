@@ -19,7 +19,7 @@ const Timeline = () => {
     const [loader, setLoader] = React.useState(true);
 
     React.useEffect(() => {
-        fetchData('news/timeline/', setData, setLoader);
+        fetchData('api/timeline/', setData, setLoader);
     }, []);
 
     return (
