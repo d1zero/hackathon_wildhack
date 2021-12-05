@@ -1,9 +1,9 @@
 import React from 'react';
-import { AppBar, Box, Toolbar, IconButton, Tabs, Tab } from '@mui/material';
+import { AppBar, Box, Toolbar, Tabs, Tab } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import { Search, SearchIconWrapper, StyledInputBase } from './Header.styles';
+import logo from '../../Logo.png';
 
 const Header = () => {
     const [page, setPage] = React.useState(0);
@@ -29,17 +29,12 @@ const Header = () => {
                 style={{ padding: '0 20px', marginBottom: '20px' }}
             >
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{
-                            display: { xs: 'inline-flex', sm: 'none' },
-                        }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
+                    <img
+                        src={logo}
+                        alt="Логотип"
+                        height="64px"
+                        style={{ marginRight: '20px' }}
+                    />
                     <Tabs
                         sx={{
                             flexGrow: 1,

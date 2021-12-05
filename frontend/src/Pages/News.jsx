@@ -2,6 +2,7 @@ import React from 'react';
 import { CircularProgress, Box, Pagination, Typography } from '@mui/material';
 import CardBox from '../components/CardBox';
 import fetchData from '../utils/fetchData';
+import SetTitle from '../hooks/setTitle';
 
 const News = () => {
     const [data, setData] = React.useState();
@@ -12,9 +13,13 @@ const News = () => {
         fetchData(`api/?page=${page}`, setData, setLoader);
     }, [page]);
 
+    SetTitle('Новости');
+
     return (
         <div>
-            <h2>Новости</h2>
+            <Typography variant="h2" gutterBottom align="center">
+                Новости
+            </Typography>
             {loader ? (
                 <CircularProgress />
             ) : (
@@ -33,13 +38,20 @@ const News = () => {
                     })}
                 </Box>
             )}
-            <Typography>{page}</Typography>
             <Pagination
+                variant="outlined"
+                color="primary"
                 count={data?.pages}
                 showFirstButton
                 showLastButton
                 onChange={(event, val) => {
                     setPage(val);
+                }}
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    margin: '40px 0 0 0',
+                    paddingBottom: '20px',
                 }}
             />
         </div>
