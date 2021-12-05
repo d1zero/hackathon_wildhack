@@ -9,11 +9,13 @@ const fetchData = async (uri, setter, loader) => {
         })
         .then((data) => {
             setter(data);
+            console.log(data);
             loader(false);
         })
         .catch((e) => {
             console.log(e);
             setter(null);
+            loader(true);
         });
 };
 

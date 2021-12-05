@@ -106,6 +106,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [
+    (BASE_DIR / '../frontend/build/static/'),
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -115,7 +118,7 @@ CSRF_TRUSTED_ORIGINS = []
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 20,
+    'PAGE_SIZE': 12,
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
     ]
